@@ -3,14 +3,32 @@
 
 void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
-    t_list *current = (*begin_list);
-    while(current)
+    t_list *current;
+    t_list *prev;
+    t_list *to_free;
+
+    if (begin_list == NULL || cmp == NULL)
+        return;
+
+    prev = NULL;
+    current = *begin_list;
+    while (current != NULL)
     {
-        if(cmp(data_ref, current->data))
+        if (cmp(current->data, data_ref) == 0)
         {
-            free(current->data);
-            free(current);
+            to_free = current;
+            if (prev == NULL)
+                *begin_list = current->next;
+            else
+                prev->next = current->next;
+            current = current->next;
+            free(to_free->data);
+            free(to_free);
         }
-        current = current -> next;
+        else
+        {
+            prev = current;
+            current = current->next;
+        }
     }
 }
