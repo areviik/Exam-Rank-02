@@ -35,7 +35,7 @@ int main(int ac, char **av)
             write(1, &av[1][i], 1);
             i++;
         }
-        if (flag)
+        if (flag && !is_space(av[1][i-1]))
             write(1, " ", 1);
         while (start < end)
         {
