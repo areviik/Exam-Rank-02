@@ -17,7 +17,6 @@ int main(int argc, char **argv)
             while(argv[1][i] && argv[1][i] != ' ' && argv[1][i] != '\t')
                 i--;
             int start = i + 1;
-            int flag = start;
             while (start <= end)
             {
                 write(1,&argv[1][start], 1);
