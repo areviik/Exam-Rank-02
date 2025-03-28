@@ -1,6 +1,6 @@
 int isspace(int c)
 {
-    return (c == 9 || c == 10 || c == 11 || c == 12 || c == 13 || c == 32);
+    return (c == ' ' || (c >= '\t' && c <= '\r'));
 }
 
 int isvalid(int ch, int baselen)
@@ -38,7 +38,7 @@ int ft_atoi_base(const char *str, int str_base)
             val = str[i] - '0';
         else if (str[i] >= 'a' && str[i] <= 'f')
             val = str[i] - 'a' + 10;
-        else
+        else if (str[i] >= 'A' && str[i] <= 'F')
             val = str[i] - 'A' + 10;
 
         num = num * str_base + val;
