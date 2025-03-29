@@ -10,12 +10,11 @@ int main(int argc, char **argv)
 
         if (num1 > 0 && num2 > 0)
         {
-            while(num1 != num2)
+            while (num2 != 0)
             {
-                if(num1 > num2)
-                    num1 = num1 - num2;
-                else 
-                    num2 = num2 - num1;
+                int temp = num2;
+                num2 = num1 % num2;
+                num1 = temp;
             }
             printf("%d", num1);
         }
