@@ -15,6 +15,6 @@ char	*ft_strpbrk(const char *s1, const char *s2)
         }
         i++;
     }
-   // return (NULL);  // I commented it cause NULL was causing an error without stdio.h
+   return (NULL); 
 }
 
