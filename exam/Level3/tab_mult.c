@@ -10,9 +10,9 @@ void ft_putstr(char *s)
     }
 }
 
-int ft_atoi(const char *str)
+unsigned int ft_atoi(const char *str)
 {
-    int num = 0;
+    unsigned int num = 0;
     while (*str && *str >= '0' && *str <= '9')
     {
         num = num * 10 + (*str - '0');
