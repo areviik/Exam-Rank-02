@@ -1,18 +1,16 @@
 #include <unistd.h>
 
-void  ft_putchar(char c)
+static void  ft_putchar(char c)
 {
     write(1, &c, 1);
 }
 
-int ft_isspace(char c)
+static int ft_isspace(char c)
 {
-    if (c <= 32)
-        return (1);
-    return (0);
+    return (c == ' ' || (c >= '\t' && c <= '\r'));
 }
 
-void str_capitalizer(char *str)
+static void str_capitalizer(char *str)
 {
     unsigned int i = 0;
     while (str[i])
