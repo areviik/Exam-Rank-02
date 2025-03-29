@@ -21,7 +21,7 @@ unsigned int ft_atoi(const char *str)
     return (num);
 }
 
-void ft_putnbr(int num)
+void ft_putnbr(unsigned int num)
 {
     if (num >= 10)
         ft_putnbr(num / 10);
