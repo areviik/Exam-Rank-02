@@ -5,10 +5,7 @@ char *ft_strrev(char *str)
     char new;
 
     while (str[len] != '\0')
-    {
         len++;
-    }
-
     while (i < len / 2)
     {
         new = str[i];
@@ -16,6 +13,5 @@ char *ft_strrev(char *str)
         str[len - i - 1] = new;
         i++;
     }
-
     return str;
 }
