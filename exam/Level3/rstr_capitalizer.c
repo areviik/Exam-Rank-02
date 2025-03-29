@@ -5,11 +5,9 @@ void  ft_putchar(char c)
     write(1, &c, 1);
 }
 
-int ft_isspace(char c)
+static int ft_isspace(char c)
 {
-    if (c <= 32)
-        return (1);
-    return (0);
+    return (c == ' ' || (c >= '\t' && c <= '\r'));
 }
 
 void rev_capitalizer(char *str)
