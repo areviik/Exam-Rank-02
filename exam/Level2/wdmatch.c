@@ -5,8 +5,8 @@ int main(int argc, char **argv)
 
     if(argc == 3)
     {
-    unsigned int i = 0, len = 0;
-    const char *s1 = argv[1], *s2 = argv[2];
+        unsigned int i = 0, len = 0;
+        const char *s1 = argv[1], *s2 = argv[2];
 
         while(s1[len])
             len++;
