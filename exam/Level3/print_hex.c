@@ -3,22 +3,12 @@
 unsigned int ft_atoi(const char *str)
 {
     unsigned int number;
-    /*int sign = 1;
-    while (*str == 32 || (*str >= 9 && *str <= 13))
-        str++;
-    if(*str == '+')
-        str++;
-    if(*str == '-')
-    {
-        sign = -1;
-        str++;
-    }*/
     while (*str && *str >= '0' && *str <= '9')
     {
         number = number * 10 + (*str - '0');
         str++;
     }
-    return (number /** sign*/);
+    return (number);
 }
 
 void print_hex(int num)
