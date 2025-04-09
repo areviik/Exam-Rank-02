@@ -20,7 +20,7 @@ static int num_length(long int li)
 
 static char *ft_converter(char *str, int len, long int number)
 {
-    while (number > 0)
+    while (len >= 0 && number > 0)
     {
         str[len] = (number % 10) + '0';
         number /= 10;
