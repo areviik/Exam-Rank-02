@@ -4,9 +4,7 @@ int main(int ac, char *av[])
 {
     if (ac == 4)
     {
-        int i;
-        
-        i = 0;
+        int i = 0;
         while (av[1][i])
         {
             if (av[1][i] == av[2][0])
