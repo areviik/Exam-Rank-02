@@ -1,4 +1,4 @@
-int isspace(int c)
+int ft_isspace(int c)
 {
     return (c == ' ' || (c >= '\t' && c <= '\r'));
 }
@@ -20,8 +20,12 @@ int isvalid(int ch, int baselen)
 int ft_atoi_base(const char *str, int str_base)
 {
     int num = 0, sign = 1, i = 0;
+    int val = 0;
 
-    while (isspace(str[i]))
+    if (str_base < 2 || str_base > 16) 
+    return 0;
+
+    while (ft_isspace(str[i]))
         i++;
     if (str[i] == '+')
         i++;
@@ -32,7 +36,6 @@ int ft_atoi_base(const char *str, int str_base)
     }
     while (str[i] && isvalid(str[i], str_base))
     {
-        int val;
 
         if (str[i] >= '0' && str[i] <= '9')
             val = str[i] - '0';
