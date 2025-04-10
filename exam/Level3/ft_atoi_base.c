@@ -20,7 +20,6 @@ int isvalid(int ch, int baselen)
 int ft_atoi_base(const char *str, int str_base)
 {
     int num = 0, sign = 1, i = 0;
-    int val = 0;
 
     if (str_base < 2 || str_base > 16) 
     return 0;
@@ -36,7 +35,7 @@ int ft_atoi_base(const char *str, int str_base)
     }
     while (str[i] && isvalid(str[i], str_base))
     {
-
+        int val = 0;
         if (str[i] >= '0' && str[i] <= '9')
             val = str[i] - '0';
         else if (str[i] >= 'a' && str[i] <= 'f')
