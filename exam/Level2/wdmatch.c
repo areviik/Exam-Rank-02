@@ -2,22 +2,21 @@
 
 int main(int argc, char **argv)
 {
-
-    if(argc == 3)
+    if (argc == 3)
     {
-        unsigned int i = 0, len = 0;
-        const char *s1 = argv[1], *s2 = argv[2];
+        int i = 0;
+        int j = 0;
+        const char *str1 = argv[1];
+        const char *str2 = argv[2];
 
-        while(s1[len])
-            len++;
-
-        while (i < len && *s2)
+        while (str1[i] != 0 && str2[j] != 0)
         {
-            if(s1[i] == *s2++)
+             if (str1[i] == str2[j])
                 i++;
+             j++;
         }
-        if (i == len)
-            write(1, s1, len);
+        if (str1[i] == '\0')
+            write(1, str1, i);
     }
-    write(1,"\n",1);
+    write(1, "\n" ,1);
 }
