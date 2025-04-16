@@ -1,18 +1,22 @@
 #include <unistd.h>
-int main(int argc, char *argv[])
+
+static int ft_space(char c)
 {
-	if (argc == 2)
-	{
-		unsigned int i = 0;
-	   	while(argv[1][i] == 32 || argv[1][i] == 9)
-		{
-			i++;
-		}
-		while(argv[1][i] != 32 && argv[1][i] != 9 && argv[1][i])
-		{
-			write(1, &argv[1][i], 1);
-			i++;
-		}	
-	}
-	write(1, "\n",1);
+    return (c == ' ' || (c >= '\t' && c <= '\r'));
+}
+
+int main(int argc, char **argv)
+{
+    if (argc == 2)
+    {
+        int i = 0;
+        while (argv[1][i] && ft_space(argv[1][i]))
+            i++;
+        int start = i;
+        while (argv[1][i] && !ft_space(argv[1][i]))
+            i++;
+        while(start < i)
+            write(1,&argv[1][start++],1);
+    }
+    write(1,"\n",1);
 }
