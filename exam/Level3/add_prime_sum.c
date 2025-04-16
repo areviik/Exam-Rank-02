@@ -1,57 +1,34 @@
 #include <unistd.h>
 
-void ft_putchar(char c)
+static void ft_putnbr(unsigned int num)
 {
-    write(1, &c, 1);
-}
-
-void ft_putnbr(int nbr)
-{
-    unsigned int num;
-    if (nbr < 0)
-    {
-        ft_putchar('-');
-        num = -nbr;
-    }
-    else
-        num = nbr;
-    if (num >= 10)
-    {
+    if(num >= 10)
         ft_putnbr(num / 10);
-    }
-    ft_putchar(num % 10 + '0');
+    char c = num % 10 + '0';
+    write(1,&c,1);
 }
 
-int ft_atoi(char *str)
+static unsigned int ft_atoi(char *s)
 {
-    int number = 0;       
-    int sign = 1;
-
-    while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-        str++;
-    if (*str == '-')
+     unsigned int num = 0;
+    while (*s >= '0' && *s <= '9')
     {
-        sign = -1;
-        str++;
+        num = num * 10 + (*s - '0');
+        s++;
     }
-    else if (*str == '+')
-        str++;
-    while (*str >= '0' && *str <= '9')
-    {
-        number = number * 10 + (*str - '0');
-        str++;
-    }
-    return (number * sign);
+    return num;
 }
 
-int ft_is_prime(int nbr)
+static int ft_prime(int number)
 {
-    if (nbr < 2)
+    if (number < 2)
         return 0;
-    for (int i = 2; i * i <= nbr; i++)
+    int i = 2;
+    while (i * i <= number)
     {
-        if (nbr % i == 0)
+        if (number % i == 0)
             return 0;
+        i++;
     }
     return 1;
 }
@@ -61,27 +38,19 @@ int main(int argc, char **argv)
     if (argc == 2)
     {
         int n = ft_atoi(argv[1]);
-        if (n <= 1) 
+        if (n < 1)
         {
-            ft_putchar('0');
-            ft_putchar('\n');
-            return 0;
+            ft_putnbr(0);
+            write(1,"\n",1);
         }
-
         int sum = 0;
         while (n > 1)
         {
-            if (ft_is_prime(n))
-                sum = sum + n;
+            if(ft_prime(n))
+                sum += n;
             n--;
         }
         ft_putnbr(sum);
-        ft_putchar('\n');
     }
-    else
-    {
-        ft_putchar('0');
-        ft_putchar('\n');
-    }
-    return 0;
+    write(1,"\n",1);
 }
