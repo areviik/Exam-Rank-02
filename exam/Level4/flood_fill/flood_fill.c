@@ -11,10 +11,10 @@ static void fill(char **tab, t_point size, int y, int x, char target, char repla
     fill(tab, size, y, x-1, target, replacement);
 }
 
-void flood_fill(char **tab, t_point size, t_point start)
+void flood_fill(char **tab, t_point size, t_point begin)
 {
-    char target = tab[start.y][start.x];
+    char target = tab[begin.y][begin.x];
     if (target == 'F')
         return;
-    fill(tab, size, start.y, start.x, target, 'F');
+    fill(tab, size, begin.y, begin.x, target, 'F');
 }
