@@ -1,22 +1,20 @@
 #include "flood_fill.h"
 
-static void flood_fill_recursive(char **tab, t_point size, int x, int y, char old_char, char new_char)
+static void fill(char **tab, t_point size, int y, int x, char target, char replacement)
 {
-    if (x < 0 || x >= size.x || y < 0 || y >= size.y || tab[y][x] != old_char)
+    if (y < 0 || y >= size.y || x < 0 || x >= size.x || tab[y][x] != target)
         return;
-    tab[y][x] = new_char;
-    flood_fill_recursive(tab, size, x + 1, y, old_char, new_char);
-    flood_fill_recursive(tab, size, x - 1, y, old_char, new_char);
-    flood_fill_recursive(tab, size, x, y + 1, old_char, new_char);
-    flood_fill_recursive(tab, size, x, y - 1, old_char, new_char);
+    tab[y][x] = replacement;
+    fill(tab, size, y+1, x, target, replacement);
+    fill(tab, size, y-1, x, target, replacement);
+    fill(tab, size, y, x+1, target, replacement);
+    fill(tab, size, y, x-1, target, replacement);
 }
 
-void flood_fill(char **tab, t_point size, t_point begin)
+void flood_fill(char **tab, t_point size, t_point start)
 {
-    char old_char = tab[begin.y][begin.x]; 
-    if (old_char != 'F')  
-        flood_fill_recursive(tab, size, begin.x, begin.y, old_char, 'F');
+    char target = tab[start.y][start.x];
+    if (target == 'F')
+        return;
+    fill(tab, size, start.y, start.x, target, 'F');
 }
-
-
-// y -> row, x -> columns
