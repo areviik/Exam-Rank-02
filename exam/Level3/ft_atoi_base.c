@@ -1,6 +1,8 @@
 int ft_atoi_base(const char *str, int str_base)
 {
-    int num = 0, sign = 1, digit;
+    int num = 0;
+    int sign = 1;
+    int digit;
 
     if (str_base < 2 || str_base > 16)
         return 0;
@@ -15,6 +17,9 @@ int ft_atoi_base(const char *str, int str_base)
         str++;
     }
 
+    if (*str == '\0')
+        return 0;
+
     while (*str)
     {
         if (*str >= '0' && *str <= '9')
@@ -27,7 +32,7 @@ int ft_atoi_base(const char *str, int str_base)
             break;
 
         if (digit >= str_base)
-            break;
+            return 0;
 
         num = num * str_base + digit;
         str++;
