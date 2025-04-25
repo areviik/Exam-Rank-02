@@ -21,11 +21,10 @@ int main(int ac, char **av)
         i = 0;
         while (av[1][i])
         {
-            if (av[1][i] == '_')
+            if (av[1][i] == '_' &&  av[1][i + 1] != '\0')
                 ft_putchar(toUpper(av[1][++i]));
             else
-                ft_putchar(av[1][i]);
-            i++;
+                ft_putchar(av[1][i++]);
         }
     }
     ft_putchar('\n');
