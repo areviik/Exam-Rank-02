@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     if (argc == 2)
     {
         int n = ft_atoi(argv[1]);
-        if (n < 1)
+        if (n < 2)
         {
             ft_putnbr(0);
             write(1,"\n",1);
@@ -52,5 +52,7 @@ int main(int argc, char **argv)
         }
         ft_putnbr(sum);
     }
+    else
+        ft_putnbr(0);
     write(1,"\n",1);
 }
