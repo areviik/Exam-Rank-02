@@ -17,8 +17,7 @@ t_list *sort_list(t_list *lst, int (*cmp)(int, int))
 
         while (current->next != last_unsorted)
         {
-            if (cmp(current->data, current->next->data) > 0) // ascending
-            {
+            if (cmp(current->data, current->next->data) == 0) // ascending
                 int temp = current->data;
                 current->data = current->next->data;
                 current->next->data = temp;
